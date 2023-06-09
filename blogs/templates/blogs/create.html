@@ -1,0 +1,19 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New Post {% endblock %}</h1>
+
+<form class="col-sm-6" method="post" action="{% url 'blogs:create' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Title</label>
+        {{ form.title }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.content.id_for_label }}">Content</label>
+        {{ form.content }}
+    </div>
+    <button class="btn btn-primary" type="submit">Create Post</button>
+</form>
+{% endblock %}
+

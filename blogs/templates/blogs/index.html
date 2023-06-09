@@ -1,0 +1,22 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+    <h1>Welcome to DjangoBlog!</h1>
+        <a href="{% url 'blogs:create' %}">
+        <span class="badge badge-primary">
+            Create new post
+        </span>
+        </a>
+    <hr>
+    {% for post in posts %}
+        <a href="{% url 'blogs:post' pk=post.id %}">
+            <h2>{{ post.title }}</h2>
+        </a>
+        <span class="badge badge-primary">
+            {{ post.created_at }}
+        </span>
+        <span class="badge badge-primary">
+            Author: {{ post.author }}
+        </span>
+        <hr>
+    {% endfor %}
+{% endblock %}
